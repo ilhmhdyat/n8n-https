@@ -8,7 +8,7 @@ services:
       - "443:443"  # Untuk trafik HTTPS
     volumes:
       - caddy_data:/data  # Volume untuk menyimpan sertifikat SSL secara permanen
-    command: caddy reverse-proxy --from n8n.curug.id --to n8n:5678
+    command: caddy reverse-proxy --from n8n.test.com --to n8n:5678
 
   # Layanan n8n
   n8n:
@@ -19,7 +19,7 @@ services:
       # n8n berjalan di HTTP biasa di dalam jaringan Docker.
       - GENERIC_TIMEZONE="Asia/Jakarta"
       - TZ="Asia/Jakarta"
-      - WEBHOOK_URL=https://n8n.curug.id/ # URL publik tetap HTTPS
+      - WEBHOOK_URL=https://n8n.test.com/ # URL publik tetap HTTPS
       - NODE_FUNCTION_ALLOW_EXTERNAL="axios,cheerio"
     volumes:
       # Arahkan ke volume data Anda yang sudah ada agar workflow tidak hilang
